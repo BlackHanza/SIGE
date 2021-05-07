@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/', function () {
-    return view('site.home');
+    return view('site.homenp');
 })->name('site.home');
 
 Route::get('/BIpv', function () {
@@ -19,7 +19,6 @@ Route::get('/BIrenov', function () {
 Route::get('/BIsv', function () {
     return view('BISegV');
 })->name('site.BIsv');;
-
 
 Route::get('/BIinform', function () {
     return view('BIinf');
