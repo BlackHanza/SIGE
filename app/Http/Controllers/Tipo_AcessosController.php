@@ -14,7 +14,7 @@ class Tipo_AcessosController extends Controller
      */
     public function index()
     {
-        dd('estou naqui');
+        dd('estou aqui');
     }
 
     /**
