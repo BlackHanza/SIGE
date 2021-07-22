@@ -1,41 +1,76 @@
 <?php
 
+use App\Http\Controllers\Tipo_AcessosController;
 use Illuminate\Support\Facades\Route;
 
 
+/*GUEST*/
 
-Route::get('/', function () {
-    return view('site.homenp');
-})->name('site.home');
+Route::get('/bemvindo', function () { return view('site.home');});
+Route::get('/binformacao', function () { return view('site.BInfo');});
+Route::get('/rinformacao', function () { return view('site.Reginfo');});
+Route::get('/ajuda', function () { return view('site.ComoUsar');});
 
-Route::get('/BIpv', function () {
-    return view('BIfirstT');
-})->name('site.BIpv');;
 
-Route::get('/BIrenov', function () {
-    return view('BIrenovar');
-})->name('site.BIrenov');;
+//Utente
 
-Route::get('/BIsv', function () {
-    return view('BISegV');
-})->name('site.BIsv');;
 
-Route::get('/BIinform', function () {
-    return view('BIinf');
-})->name('site.BIinform');;
+Route::resource('primeiravez', 'Tipo_AcessosController');
 
-Route::get('/REgistoCriminal', function () {
-    return view('RegisTratar');
-})->name('site.RegistoCriminal');;
+Route::get('/BemVindo', function () {
+    return view('utente.pages.home');
+});
 
-Route::get('/RegistoInfo', function () {
-    return view('RegisInf');
-})->name('site.RegistoInfo');;
+Route::get('/primeiravez', function () {
+    return view('utente.pages.bipv');
+})->name('utente.primeiravez');;
 
-Route::get('/ComoUsar', function () {
-    return view('CUse');
-})->name('site.ComoUsar');;
+Route::get('/renovar', function () {
+    return view('utente.pages.biRenov');
+})->name('utente.BIrenov');;
 
-Auth::routes();
+Route::get('/averbar', function () {
+    return view('utente.pages.averbar');
+})->name('utente.averbar');;
+
+Route::get('/segundavia', function () {
+    return view('utente.pages.biSegV');
+})->name('utente.BIsv');;
+
+Route::get('/biinformacao', function () {
+    return view('utente.pages.biInfo');
+})->name('utente.BIinfo');;
+
+Route::get('/registocriminal', function () {
+    return view('utente.pages.regis');
+})->name('utente.RegistoCriminal');;
+
+Route::get('/rcinformacao', function () {
+    return view('utente.pages.regisinfo');
+})->name('utente.RegistoInfo');;
+
+Route::get('/contacto', function () {
+    return view('utente.pages.contacto');
+})->name('utente.Ucontacto');;
+
+
+
+Route:: get('/login', function(){
+    return view('auth.passwords.login');
+});;
+
+Route::get('/sigespe', function () {
+    return view('admin.inicio');
+})->name('');
+    Route::prefix('admin')->group(function(){
+        Route::get('/dashboard', function () {
+            return view('admin.pages.dashboard');
+        });        
+    });
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::resource('cadastro', 'Tipo_AcessosController');
+Route::resource('utilizador','UsersController');
+
+
