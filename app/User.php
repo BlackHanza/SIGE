@@ -5,6 +5,8 @@ namespace App;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use App\Models\Pessoa;
+use App\Models\Service;
 
 class User extends Authenticatable
 {
@@ -17,7 +19,7 @@ class User extends Authenticatable
      */
     
     protected $fillable = [
-        'idprivilegio', 'email', 'password','pessoa_idpessoa'
+        'privilegio_idprivilegio', 'email', 'password','pessoa_idpessoa'
     ];
 
     /**
@@ -37,4 +39,27 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+      /**
+     * Get the comments for the blog post.
+     */
+    public function services()
+    {
+        return $this->hasMany(Service::class);
+    }
+
+    public function pessoa()
+    {
+        return $this->belongsTo(Pessoa::class, 'idpessoa', 'pessoa_idpessoa');
+    }
+
+    /**
+     * Get all of the comments for the User
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function pessoas()
+        {
+        return $this->hasMany(Pessoa::class, 'idpessoa', 'pessoa_idpessoa');
+    }
 }

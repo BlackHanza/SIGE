@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Pessoa;
+use App\User;
 use Illuminate\Http\Request;
 
 class UsersController extends Controller
@@ -13,7 +15,7 @@ class UsersController extends Controller
      */
     public function index()
     {
-        //
+       return view('admin.pages.utentes', ['requests' => User::with('pessoas')->get()]);
     }
 
     /**
@@ -34,39 +36,57 @@ class UsersController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $modelo = User::create($request->except('_token'));
+        $pessoa = Pessoa::create([
+            //'idutente' => $pessoa->id
+        ]);
+      
+        return back();
+       
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(User $user)
     {
-        //
+        $modelo = User::where('User', $user)->first();
+      
+        // dd($suportes);        
+        // $suportes = Suporte::find($id);
+ 
+         
+ 
+         return view('admin.pages.vernotificacao', [
+ 
+           'modelo'=> $modelo
+             
+         ]);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(User $user)
     {
-        //
+        return view('utente.pages.editarconta');
     }
+   
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, User $user)
     {
         //
     }
@@ -74,11 +94,15 @@ class UsersController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(User $user)
     {
-        //
+        $users = $this->repository->where('iduser')->first();
+        if(!$users)
+        return redirect()->back();
+        $user->delete();
+        return redirect()->route('user.index');
     }
 }

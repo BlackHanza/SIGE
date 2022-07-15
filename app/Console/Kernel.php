@@ -16,6 +16,28 @@ class Kernel extends ConsoleKernel
         //
     ];
 
+    protected $middleware = [
+       'web' =>[
+        \App\Http\Middleware\TrimStrings::class,  
+
+       ],    
+
+    ];
+
+    protected $middlewareGroup = [
+        \Illuminate\session\Middleware\StartSession::class,
+
+         
+    ];
+
+    protected $routeMiddleware = [
+        'check.is.admin' => App\Http\Middleware\CheckIsAdminMiddleware::class,
+        'check.is.funcionario' => App\Http\Middleware\CheckIsFuncionarioMiddleware::class,
+
+
+         
+    ];
+
     /**
      * Define the application's command schedule.
      *

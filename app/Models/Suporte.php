@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -8,5 +8,8 @@ class Suporte extends Model
 {
     protected $table = "suporte";
     protected $primarykey = "idsuporte";
-    protected $fillable = ['mensagem','nome','email','resposta'];
+    protected $fillable = ['nome','email','mensagem','resposta'];
+
 }
+
+?>

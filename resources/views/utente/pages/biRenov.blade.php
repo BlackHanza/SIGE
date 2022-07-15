@@ -1,39 +1,39 @@
 @extends('layouts.utente')
 
-@section('title', 'Renovar')
+@section('title', 'Bilhete de Identidade')
 
 @section('conteudo')
 
 
 <div class="container">
   <div class="py-5 text-center">
-      <h2 class="mt-1">BILHETE DE IDENTIDADE</h2>
+      <h2 class="mt-1">Renovar Bilhete</h2>
   </div>
   <div class="row">
     <div class="col-md-4 order-md-2 mb-4">
       <h4 class="d-flex justify-content-between align-items-center mb-3">
-        <span class="text-muted">TABELA DE PREÇOS</span>        
+        <span class="text-muted">Tabela de Preço</span>        
       </h4>
-      <hr class="mb-4">
+      <hr class="mb-1">
       <ul class="list-group mb-3">
         <li class="list-group-item d-flex justify-content-between lh-condensed">
           <div>
             <h6 class="my-0">1ª Vez</h6>
-            <small class="text-muted">Cidadão Nacional</small>
+            <small class="text-muted">Primeira Via</small>
           </div>
           <span class="text-muted">Isento</span>
         </li>
         <li class="list-group-item d-flex justify-content-between lh-condensed">
           <div>
             <h6 class="my-0">Caducidade</h6>
-            <small class="text-muted">BI Original</small>
+            <small class="text-muted">Renovar</small>
           </div>
           <span class="text-muted">455.00KZ</span>
         </li>
         <li class="list-group-item d-flex justify-content-between lh-condensed">
           <div>
             <h6 class="my-0">Extravio</h6>
-            <small class="text-muted">Qual for o motivo</small>
+            <small class="text-muted">Segunda Via</small>
           </div>
           <span class="text-muted">3.828.00KZ</span>
         </li>
@@ -61,92 +61,156 @@
       </ul>
       
     </div>
+
     <div class="col-md-8 order-md-1">
-      <h4 class="mb-2">DADOS</h4>
-      <hr class="mb-4">
-      <form action="{{route('cadastro.store')}}" class="needs-validation" method="POST" novalidate>
+            <hr class="mb-1">
+
+
+
+      <form action="{{route('renovar.store')}}" enctype="multipart/form-data" class="needs-validation" method="POST" novalidate>
 @csrf
-        <div class="row">
-          <div class="col-md-6 mb-3">
-            <label for="firstName">NOME COMPLETO</label>
-            <input type="text" class="form-control" id="firstName" placeholder="" value="" required name="nome">
+        <h4 class="mb-1">Identificação Pessoal</h4>        
+        <hr class="mb-1">
+
+              
+        <div class="row">          
+          <div class="col-md-5 mb-3">
+            <label for="firstName">Nome</label>
+            <input type="text" class="form-control" placeholder="Nome Completo" value="" required name="nome">
             <div class="invalid-feedback">
               Valid first name is required.
             </div>
           </div>
-          <div class="col-md-6 mb-3">
-            <label for="lastName">NÚMERO DO BI</label>
-            <input type="text" class="form-control" id="lastName" placeholder="" value="" required>
+
+               
+          <div class="col-md-5 mb-3">
+            <label for="FName">Número do BI</label>
+            <input type="text" class="form-control"  placeholder="Número do Bilhete" value="" required name="bi_numero">
             <div class="invalid-feedback">
               Valid last name is required.
             </div>
           </div>
-
-          <div class="custom-control custom-checkbox">
-            <input type="checkbox" class="custom-control-input" id="save-info">
-            <label class="custom-control-label" for="save-info">Desejo alterar dados do meu Bilhete de Identidade</label>
-          </div>
-
-          <div class="col-md-6 mb-3">
-            <label for="Fich">Bilhete de Identidade</label>
-            <input type="file"  id="Fich" required>
-         </div>
+          
         </div>
-
-      <hr class="mb-4">
+         
+         <hr class="mb-1">
+         <h4 class="mb-1">Endereço Pessoal</h4>
+         <hr class="mb-1">
+         
+       
 
          <div class="row">
 
-            <div class="col-md-6 mb-3">
-                <label for="firstName">ATUALIZAR NOME</label>
-                <input type="text" class="form-control" id="firstName" placeholder="" value="" required>
-                <div class="invalid-feedback">
-                  Valid first name is required.
-
-         <div class="col-md-5 mb-3">
-          <label for="address">ACTUALIZAR MORADA</label>
-          <input type="text" class="form-control" id="address" placeholder="Morada atual" required>
-          <div class="invalid-feedback">
-            Please enter your shipping address.
-          </div>
-         </div>
-
-         <div class="col-md-5 mb-3">
-            <label for="address">DISTRITO</label>
-            <input type="text" class="form-control" id="address" placeholder="Morada atual" required>
-            <div class="invalid-feedback">
-              Please enter your shipping address.
-            </div>
-           </div>
-         
+            
           <div class="col-md-5 mb-3">
-            <label for="country">MUNÍCIPIO</label>
-            <select class="custom-select d-block w-100" id="country" required>
+            <label for="address">Morada</label>
+            <input type="text" class="form-control" placeholder="Casa nº, Rua" name="morada" required>
+            <div class="invalid-feedback">
+            Please enter your shipping address.
+            </div>
+          </div>
+  
+          <div class="col-md-5 mb-3">
+            <label for="country">Distrito</label>
+            <select class="custom-select d-block w-100" id="country" required name="distrito">
               <option value="">Selecionar...</option>
-              <option>United States</option>
+              <option>SAMBA</option>
+              <option>MAIANGA</option>
+              <option>INGOMBOTAS</option>
+              <option>RANGEL</option>
+              <option>SAMBIZANGA</option>
+              <option>TALATONA</option>
+              <option>KILAMBA</option>
+              <option>BITA TANQUE</option>
             </select>
             <div class="invalid-feedback">
               Please select a valid country.
             </div>
           </div>
+            
+            <div class="col-md-5 mb-3">
+              <label for="country">Município</label>
+              <select class="custom-select d-block w-100"  required name="municipio_idmunicipio">
+                <option value="">Selecionar...</option>
+                @foreach ($municipio as $item)
+                <option value="{{$item->idmunicipio}}">{{$item->municipio}}</option>
+                @endforeach
+              </select>
+              <div class="invalid-feedback">
+                Please select a valid country.
+              </div>
+            </div>
+  
+            <div class="col-md-4 mb-2">
+              <label for="state">Província</label>
+              <select class="custom-select d-block w-100"  required name="provincia">
+                <option>LUANDA</option>
+                <option>CABINDA</option>
+                <option>CUNENE</option>
+                <option>BENGO</option>
+                <option>BENGUELA</option>
+                <option>LOBITO</option>
+                <option>LUANDA</option>
+                <option>MALANJE</option>
+                <option>KWANZA SUL</option>
+                <option>KWANZA NORTE</option>
+                <option>LUNDA SUL</option>
+                <option>LUNDA NORTE</option>
+                <option>MOXICO</option>
+                <option>ZAIRE</option>
+                <option>UIGE</option>
+                <option>NAMIBE</option>
+                <option>HUILA</option>
+                <option>BIE</option>
+                <option>HUAMBO</option>
+              </select>
+              <div class="invalid-feedback">
+                Please provide a valid state.
+              </div>
+            </div>
+           </div>
+         
+         <hr class="mb-1">
+         <h4 class="mb-1">Anexos e Outros</h4>
+         <hr class="mb-1">
 
-          <div class="col-md-4 mb-2">
-            <label for="state">PROVÍNCIA</label>
-            <select class="custom-select d-block w-100" id="state" required>
-              <option value="">Selecionar...</option>
-              <option>California</option>
-            </select>
+         <div class="row">
+      
+
+          <div class="col-md-6 mb-2">
+               <label for="Fich">Bilhete de Identidade</label>
+               <input type="file" required name="fichbilhete">
+          </div>
+        </div>
+          
+          <hr class="mb-1">
+          <h4 class="mb-1">Dados de Pagamento</h4>
+          <hr class="mb-1">
+
+          <div class="row">
+
+          <div class="col-md-5 mb-3">
+            <label for="nCert">Número de Transação/Operação </label>
+            <input type="text" class="form-control" placeholder="" required name="n_transacao" >
             <div class="invalid-feedback">
-              Please provide a valid state.
+              Valid last name is required.
             </div>
           </div>
-         </div>    
 
-          <hr class="mb-4">        
-           <hr class="mb-4">
-          <button class="btn btn-primary btn-lg btn-block" type="submit">Continuar</button>
+          <div class="col-md-6 mb-2">
+            <label for="Fich">Compravativo de Pagamento</label>
+            <input type="file"  id="Fich" required name="comprovativo">
+          </div>
+        </div>
+
+          
+
+                   
+            <hr class="mb-1">
+          <button class="btn btn-primary btn-lg btn-block" type="submit">Confirmar</button>
+
           </form>
          </div>
-        
+        </div>
 </div>
 @endsection

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Pessoa;
 use App\Providers\RouteServiceProvider;
 use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -64,9 +65,14 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        $pessoa = Pessoa::create([
+            'nome' => $data['name']
+        ]);
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
+            'privilegio_idprivilegio' => 1,
+            'pessoa_idpessoa' => $pessoa->id,
             'password' => Hash::make($data['password']),
         ]);
     }

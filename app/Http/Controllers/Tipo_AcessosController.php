@@ -14,8 +14,8 @@ class Tipo_AcessosController extends Controller
      */
     public function index()
     {
+    
         
-        dd('estou we');
     }
 
     /**
@@ -25,9 +25,7 @@ class Tipo_AcessosController extends Controller
      */
     public function create()
     {
-        //
     }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -36,10 +34,7 @@ class Tipo_AcessosController extends Controller
      */
     public function store(Request $request)
     {
-//        dd($request->all());
-
-        $modelo = Tiposervico::create($request->except('_token'));
-        dd($modelo);
+//                
     }
 
     /**
@@ -86,4 +81,9 @@ class Tipo_AcessosController extends Controller
     {
         //
     }
+
+   
+
+
+
 }
