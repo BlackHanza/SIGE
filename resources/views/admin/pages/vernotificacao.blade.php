@@ -1,12 +1,21 @@
-@extends('layouts.admin_index')
+@extends('layouts.admin_new')
 
 @section('conteudo')
+<div class="content-header">
+  <h1>
+    
+    Mensagem | SIGE
+  </h1>
+  <ol class="breadcrumb">
+    <li><a href="#"><i class="fa fa-envelope"></i> Notificacão</a></li>
+    <li class="active">Ver</li>
+  </ol>
+  <br>
+</div>   
 <div class="panel panel-default">
-  <div id="page-inner">
+  
     <div class="row">
-        <div class="col-md-12">
-         <h2>Detalhes</h2><br>             
-        </div>
+        
         <div class="col-md-12">
           <!-- Advanced Tables -->
                        
@@ -22,7 +31,12 @@
             @method('DELETE')
             <button class="btn btn-danger btn-lg " type="submit">Eliminar</button> 
           </form>
-</div>
+
 </div></div></div>
+<br><br>
+<br>
+<br>
+<br>
+<br>
 
 @endsection

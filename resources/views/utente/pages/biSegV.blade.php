@@ -1,4 +1,4 @@
-@extends('layouts.utente')
+@extends('layouts.utente_new')
 
 @section('title', 'Bilhete de Identidade')
 
@@ -181,11 +181,11 @@
  <div class="row">
 
 
-  <div class="col-md-6 mb-2">
-       <label for="Fich">Bilhete de Identidade</label>
-       <input type="file"  required name="fichbilhete">
+    <div class="col-md-6 mb-2">
+        <label for="Fich">Bilhete de Identidade</label>
+        <input type="file"  required name="fichbilhete">
+    </div>
   </div>
-</div>
   
   <hr class="mb-1">
   <h4 class="mb-1">Dados de Pagamento</h4>

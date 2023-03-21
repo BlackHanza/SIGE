@@ -1,4 +1,4 @@
-@extends('layouts.utente')
+@extends('layouts.utente_new')
 @section('title', 'Registo Criminal')
 
 @section('conteudo')
@@ -122,7 +122,7 @@
           </div>
           <div class="col-md-6 mb-2">
             <label for="Fich">Comprovativo de Pagamento</label>
-            <input type="file"  required name="fich_pagamento">
+            <input type="file"  required name="comprovativo">
           </div>
         </div>
         <hr class="mb-4">

@@ -111,21 +111,25 @@ class Tipo_ServicosController extends Controller
 
         $pessoa = Pessoa::create($request->except('_token'));
         $utente = Utente::create([
-            'idutente' => $pessoa->id
+            'idutente' => $pessoa->idpessoa
         ]);
+        
         //$servico = Servico::create([
-        $this->repository->create([
-            'utente_idutente' => $pessoa->id,
+        $service = $this->repository->create([
+            'nome' => $pessoa->idpessoa,
+            'utente_idutente' => $pessoa->idpessoa,
             'tipo_servico_idtipo_servico' => 1
         ]);
         
-        $assento_file = null;
+        
+        
+        $assentoFile = null;
         
         if($request->hasFile('assentofile') && $request->file('assentofile')->isValid()){
             $arquivos = $request->file('assentofile');
             $assentofile = time().'.'.$arquivos->getClientOriginalName();
             $upload = $arquivos->storeAs('public/ficheiros',$assentofile);
-            $assento_file = $assentofile;
+            $assentoFile = $assentofile;
             $pessoa->assentofile = $assentofile;
             $pessoa->save();
             if(!$upload){
@@ -136,14 +140,16 @@ class Tipo_ServicosController extends Controller
             }
         }
 
-        $maefile = null;
         
-        if($request->hasFile('bi_mae') && $request->file('bi_mae')->isValid()){
-            $arquivos = $request->file('bi_,ae');
-            $bi_mae = time().'.'.$arquivos->getClientOriginalName();
-            $upload = $arquivos->storeAs('public/ficheiros',$bi_mae);
-            $maefile = $bi_mae;
-            $pessoa->bi_mae = $bi_mae;
+
+        $maeFile = null;
+        
+        if($request->hasFile('bimae') && $request->file('bimae')->isValid()){
+            $arquivos = $request->file('bimae');
+            $bimae = time().'.'.$arquivos->getClientOriginalName();
+            $upload = $arquivos->storeAs('public/ficheiros',$bimae);
+            $maeFile = $bimae;
+            $pessoa->bi_mae = $bimae;
             $pessoa->save();
             if(!$upload){
                 return redirect()
@@ -153,14 +159,31 @@ class Tipo_ServicosController extends Controller
             }
         }
 
-        $paifile = null;
+        $paiFile = null;
         
-        if($request->hasFile('bi_pai') && $request->file('bi_pai')->isValid()){
-            $arquivos = $request->file('bi_pai');
-            $bi_pai = time().'.'.$arquivos->getClientOriginalName();
-            $upload = $arquivos->storeAs('public/ficheiros',$bi_pai);
-            $comproFile = $bi_pai;
-            $pessoa->bi_pai = $bi_pai;
+        if($request->hasFile('bipai') && $request->file('bipai')->isValid()){
+            $arquivos = $request->file('bipai');
+            $bipai = time().'.'.$arquivos->getClientOriginalName();
+            $upload = $arquivos->storeAs('public/ficheiros',$bipai);
+            $paiFile = $bipai;
+            $pessoa->bipai = $bipai;
+            $pessoa->save();
+            if(!$upload){
+                return redirect()
+                ->back()
+                ->with('Erro no upload')
+                ->withInput();
+            }
+        }
+
+        $batFile = null;
+        
+        if($request->hasFile('batismofile') && $request->file('batismofile')->isValid()){
+            $arquivos = $request->file('batismofile');
+            $batismofile = time().'.'.$arquivos->getClientOriginalName();
+            $upload = $arquivos->storeAs('public/ficheiros',$batismofile);
+            $batFile = $batismofile;
+            $pessoa->batismofile = $batismofile;
             $pessoa->save();
             if(!$upload){
                 return redirect()
@@ -213,6 +236,8 @@ class Tipo_ServicosController extends Controller
             }
         }
 
+        //dd($request);
+
         $comproFile = null;
         
         if($request->hasFile('comprovativo') && $request->file('comprovativo')->isValid()){
@@ -230,7 +255,8 @@ class Tipo_ServicosController extends Controller
             }
         }
 
-       // dd($request);
+
+    
         return back();
 
         /*
@@ -276,8 +302,6 @@ class Tipo_ServicosController extends Controller
                 ->withInput();
             }
         }
-
-        //dd($request);
 
         $comproFile = null;
         
@@ -348,13 +372,13 @@ class Tipo_ServicosController extends Controller
             }
         }
 
-        $casadoFile = null;
+        $casaFile = null;
         
         if($request->hasFile('casadofile') && $request->file('casadofile')->isValid()){
             $arquivos = $request->file('casadofile');
             $casadofile = time().'.'.$arquivos->getClientOriginalName();
             $upload = $arquivos->storeAs('public/ficheiros',$casadofile);
-            $casadoFile = $casadofile;
+            $casaFile = $casadofile;
             $pessoa->casadofile = $casadofile;
             $pessoa->save();
             if(!$upload){

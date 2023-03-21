@@ -1,4 +1,4 @@
-@extends('layouts.utente')
+@extends('layouts.utente_new')
 
 
 @section('title', 'Bilhete de Identidade')

@@ -44,5 +44,27 @@ class LoginController extends Controller
         Auth::ogout();
         return redirect()-> route('guest');
     }*/
+
+   /* public function authenticate(Request $request){
+
+        $credentials = $request->only('email', 'password');
+        
+        if(Auth::attempt($credentials)){
+
+        if(Auth::user()->is_admin){
+
+            return redirect()->intended('admin\dashboard');
+        }else{
+            return redirect()->intended('user\dashboard');
+        }
+
+    }        
+
+        return redirect('login')->withErrors([
+            'email'=> 'These credential do notmatch our records',
+        ]);
+    }
+*/
+   
 }
 

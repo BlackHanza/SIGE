@@ -38,7 +38,7 @@ class UsersController extends Controller
     {
         $modelo = User::create($request->except('_token'));
         $pessoa = Pessoa::create([
-            //'idutente' => $pessoa->id
+           'idutente' => $pessoa->idpessoa
         ]);
       
         return back();

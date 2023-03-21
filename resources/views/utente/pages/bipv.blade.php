@@ -1,11 +1,20 @@
-@extends('layouts.utente')
+@extends('layouts.utente_new')
 
 @section('title', 'Bilhete de Identidade')
 
 @section('conteudo')
 
-<div class="container">
+<style>
+  .reg{
+    color: darkgray;
+  }
   
+  .card{
+    box-shadow: 0px 0px 20px rgba(0,0,0,.5);
+  }
+</style>
+
+  <div class="container card-body">
   <div class="py-5 text-center">
       <h2 class="mt-1">Primeira Via</h2>
   </div>
@@ -71,16 +80,12 @@
           <div class="col-md-6 mb-3">
             <label for="firstName">Nome</label>
             <input type="text" class="form-control"  placeholder="Nome Completo" value="" required name="nome">
-            <div class="invalid-feedback">
-              Valid first name is required.
-            </div>
+            
           </div>
           <div class="col-md-6 mb-3">
             <label for="Nasc">Nascimento</label>
             <input type="date" class="form-control"  placeholder="" value="" required name="data_nascimento">
-            <div class="invalid-feedback">
-              Valid last name is required.
-            </div>
+            <br>
           </div>
 
           <div class="col-md-6 mb-3">
@@ -89,43 +94,32 @@
               <option value="">Selecionar</option>
               <option selected>Masculino</option>
               <option>Femenino</option>
-            </select>
-            <div class="invalid-feedback">
-              Please select a valid country.
-            </div>
+            </select>            
           </div>
 
           <div class="col-md-6 mb-3">
             <label for="country">Estado Civil</label>
-            <select class="custom-select d-block w-100"  required name="estado_civil">
+            <select class="form-select form-select-lg mb-3 custom-select d-block w-100"  required name="estado_civil">
               <option selected>Solteiro</option>
               <option>Casado</option>
               
             </select>
-            <div class="invalid-feedback">
-              Please select a valid country.
-            </div>
+            <br><br>
           </div>
           <div class="col-md-6 mb-3">
             <label for="FName">Nome do Pai</label>
             <input type="text" class="form-control"  placeholder="" value="" required name="pai">
-            <div class="invalid-feedback">
-              Valid last name is required.
-            </div>
+            
           </div>
           <div class="col-md-6 mb-3">
             <label for="MName">Nome da Mãe</label>
             <input type="text" class="form-control"  placeholder="" value="" required name="mae">
-            <div class="invalid-feedback">
-              Valid last name is required.
-            </div>
+            <br>  
           </div>
           <div class="col-md-6 mb-3">
             <label for="Natur">Naturalidade</label>
             <input type="text" class="form-control" placeholder="Natural de..." value="" required name="naturalidade">
-            <div class="invalid-feedback">
-              Valid last name is required.
-            </div>
+            
           </div>
           <div class="col-md-4 mb-2">
             <label for="state">Província</label>
@@ -133,9 +127,7 @@
               <option value="">Selecionar...</option>
               <option>Luanda</option>
             </select>
-            <div class="invalid-feedback">
-              Please provide a valid state.
-            </div>
+            
           </div>
          </div>
          <hr class="mb-4">
@@ -148,9 +140,7 @@
          <div class="col-md-5 mb-3">
           <label for="address">Morada</label>
           <input type="text" class="form-control" placeholder="Casa nº, Rua" name="morada" required>
-          <div class="invalid-feedback">
-          Please enter your shipping address.
-          </div>
+          
         </div>
 
         <div class="col-md-5 mb-3">
@@ -166,9 +156,7 @@
             <option>KILAMBA</option>
             <option>BITA TANQUE</option>
           </select>
-          <div class="invalid-feedback">
-            Please select a valid country.
-          </div>
+          
         </div>
           
           <div class="col-md-5 mb-3">
@@ -183,9 +171,7 @@
               <option>ZANGO</option>
               <option>KILAMBA KIAXI</option>
             </select>
-            <div class="invalid-feedback">
-              Please select a valid country.
-            </div>
+            
           </div>
 
           <div class="col-md-4 mb-2">
@@ -211,9 +197,7 @@
               <option>BIE</option>
               <option>HUAMBO</option>
             </select>
-            <div class="invalid-feedback">
-              Please provide a valid state.
-            </div>
+            
           </div>
          </div>
          
@@ -224,32 +208,29 @@
          <div class="row">
          <div class="col-md-6 mb-3">
             <label for="nCert">Número de Assento de Nascimento</label>
-            <input type="text" class="form-control" placeholder="" required name="n_assento" >
-            <div class="invalid-feedback">
-              Valid last name is required.
-            </div>
+            <input type="text" class="form-control" placeholder="" required name="n_assento">            
           </div>
 
           <div class="col-md-6 mb-2">
                <label for="Fich">Assento de Nascimento</label>
-               <input type="file"  id="Fich" required name="assentofile">
+               <input type="file" required name="assentofile">
           </div>
           <div class="col-md-6 mb-2">
             <label for="Fich">Cartão de Baptismo</label>
-            <input type="file"  id="Fich" required name="ficheiro">
+            <input type="file" name="batismofile">
           </div>
 
           <div class="col-md-6 mb-2">
                 <label for="Fich">BI ou Cartão Eleitoral do Pai</label>
-                <input type="file"   required name="bi_pai">
+                <input type="file" required name="bipai">
           </div>
           <div class="col-md-6 mb-2">
                 <label for="Fich">BI ou Cartão Eleitoral da Mãe</label>
-                <input type="file"   required name="bi_mae">
+                <input type="file" required name="bimae">
           </div>
         </div>
 
-            <hr class="mb-4">        
+                
             <hr class="mb-4">
           <button class="btn btn-primary btn-lg btn-block" type="submit">Confirmar</button>
 
@@ -257,4 +238,5 @@
          </div>
         </div>
 </div>
+
 @endsection

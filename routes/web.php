@@ -4,6 +4,12 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 Route:: get('/login', function(){return view('auth.login');})->name('login');
+
+Route:: get('/registar', function(){return view('layouts.registar');})->name('registar');
+
+Route:: get('/inicio', function(){return view('layouts.inicio');})->name('inicio');
+
+
 Route::resource('/conta', 'UsersController');
 Route:: get('/app', function(){return view('layouts.app');})->name('gil');
 
@@ -21,7 +27,7 @@ Route::get('/ajuda', function () { return view('site.ComoUsar');})->name('site.a
 
 //Utente
 
-Route::get('/home', function () {return view('utente.pages.home');})->name('utente');;
+Route::get('/Inicio', function () {return view('utente.pages.home');})->name('home');;
 
 
 Route::get('/bilhete/primeiravia', 'Tipo_ServicosController@createPrimeira')->name('primeiravia');;
@@ -62,7 +68,7 @@ Route::get('/registos/aprovados', function () { return view('admin.pages.aprovad
 
 Route::resource('/funcionario','FuncionariosController');
 
-Route::resource('/user', 'FuncionariosController');
+Route::resource('/user', 'UsersController');
 
 Route::resource('/suporte', 'SuportesController');
 
@@ -75,6 +81,8 @@ Route::get('/registos/{visao}', 'Tipo_ServicosController@show')->name('servico.s
 Route::get('/registos/form/{visao}','Tipo_ServicosController@showAdmin')->name('form.show');
 
 Route::get('/registos/formu/{visa}','Tipo_ServicosController@showSegunda')->name('form.segunda.show');
+
+
 Route::get('/registos/delete/{visa}','Tipo_ServicosController@destroy')->name('form.segunda.delete');
 
 Route::get('/registos/formula/{visao}','Tipo_ServicosController@showPrimeira')->name('form.show.primeira');

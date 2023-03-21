@@ -1,20 +1,26 @@
-@extends('layouts.admin_index')
+@extends('layouts.admin_new')
 
 @section('conteudo')
-
+<div class="content-header">
+  <h1>    
+    Adicionar Funcionário | SIGE
+  </h1>
+  <ol class="breadcrumb">
+    <li><a href="#"><i class="fa fa-home"></i> Início</a></li>
+    <li class="active">Funcionário</li>
+  </ol>
+  <br>
+</div> 
 
 <div class="panel panel-default">
 
   <div id="page-inner">
     <div class="row">
-        <div class="col-md-12">
-         <h2>Adicionar Funcionários</h2><br>             
-        </div>
+       
         <div class="col-md-12">
           
           <!-- Advanced Tables -->
-          <div class="panel panel-default">
-             
+        
             <div class="panel-body">
 
   
@@ -22,8 +28,7 @@
 
       <form action="{{route('funcionario.store')}}" class="needs-validation" method="POST" novalidate>
         @csrf
-        <h4 class="mb-2">Dados de Sessão</h4>        
-        <hr class="mb-4">
+        
 
         <div class="row">          
           <div class="col-md-6 mb-3">

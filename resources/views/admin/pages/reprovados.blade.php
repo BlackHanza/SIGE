@@ -1,4 +1,4 @@
-@include('layouts.admin_index')
+@include('layouts.admin_new')
 
 @section('conteudo')
 <div class="panel panel-default">

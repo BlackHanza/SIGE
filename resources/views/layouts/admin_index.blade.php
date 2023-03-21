@@ -104,7 +104,7 @@ font-size: 16px;"> {{date('d/m/y H:i')}}  &nbsp; <a href="#" class="btn btn-dang
           $('#dataTables-example').dataTable();
       });
 </script>
-    <script src="{{ asset('site/custom.js') }}"></script> 
+    <script src="{{ asset('site/demo.js') }}"></script> 
 
 </body>
 </html>

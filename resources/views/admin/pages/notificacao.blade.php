@@ -1,20 +1,21 @@
-@extends('layouts.admin_index')
-
+@extends('layouts.admin_new')
 @section('conteudo')
-
-<div class="panel panel-default">
-  <div id="page-inner">
-    <div class="row">
-        <div class="col-md-12">
-         <h2>Notificação</h2><br>             
-        </div>
-        <div class="col-md-12">
-          <!-- Advanced Tables -->
+<div class="content-header">
+  <h1>    
+    Notificação | SIGE
+  </h1>
+  <ol class="breadcrumb">
+    <li><a href="#"><i class="fa fa-home"></i> Início</a></li>
+    <li class="active">Notificação</li>
+  </ol>
+  <br>
+</div>     
+        
           <div class="panel panel-default">
              
-              <div class="panel-body">
-      <div class="table-responsive">
-        <table class="table table-striped table-sm">
+            
+      
+        <table class="table table-bordeded table-striped" id="example1">
             <thead>
                 <tr>
                 
@@ -26,7 +27,7 @@
                 </tr>
             </thead>    
             <tbody>    
-@foreach ($suporte as $suportes)
+          @foreach ($suporte as $suportes)
       <tr>
         
         <td>{{$suportes->nome}}</td>

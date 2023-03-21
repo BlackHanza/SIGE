@@ -1,4 +1,4 @@
-@extends('layouts.utente')
+@extends('layouts.utente_new')
 
 @section('title', 'Bilhete de Identidade')
 
@@ -67,7 +67,7 @@
 
 
 
-      <form action="{{route('averbar.store')}}" class="needs-validation" method="POST" novalidate>
+      <form action="{{route('averbar.store')}}" enctype="multipart/form-data" class="needs-validation" method="POST" novalidate>
 @csrf
         <h4 class="mb-1">Identificação Pessoal</h4>        
         <hr class="mb-1">
@@ -171,12 +171,12 @@
 
           <div class="col-md-6 mb-2">
                <label for="Fich">Bilhete de Identidade</label>
-               <input type="file"  id="Fich" required name="bi_fich">
+               <input type="file"  id="Fich" required name="fichbilhete">
           </div>
         
         <div class="col-md-6 mb-2">
           <label for="Fich">Comprovativo de Casado</label>
-          <input type="file"  id="Fich" required name="fich_casado">
+          <input type="file"  id="Fich" required name="casadofile">
         </div>
       
    </div>
@@ -197,7 +197,7 @@
 
           <div class="col-md-6 mb-2">
             <label for="Fich">Compravativo de Pagamento</label>
-            <input type="file"  id="Fich" required name="fich_pagamento">
+            <input type="file"  id="Fich" required name="comprovativo">
           </div>
         </div>
 
